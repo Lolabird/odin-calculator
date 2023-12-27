@@ -14,11 +14,11 @@ function displayToScreen() {
         screen.textContent = calc.calculate(screen.textContent);
     } else if (this.classList.contains("all")) {
         screen.textContent = "0";
-    } else if (this.classList.contains("error")) {
-        screen.textContent = screen.textContent.trimEnd()
-        screen.textContent = screen.textContent.slice(0, -1);
+    } else if (this.classList.contains("error") && screen.textContent !== "0") {
+            screen.textContent = screen.textContent.trimEnd()
+            screen.textContent = screen.textContent.slice(0, -1);
 
-        if (!isNaN(screen.textContent.charAt(-2))) {
+            if (!isNaN(screen.textContent.charAt(-2))) {
             screen.textContent = screen.textContent.trimEnd()
         }
     } else {
@@ -27,6 +27,7 @@ function displayToScreen() {
 
             // Add some logic for handling negatives with -
             // Add key support
+            //limit character size in screen
 
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
