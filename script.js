@@ -13,7 +13,6 @@ function displayToScreen() {
 
         console.log(screen.textContent)
         screen.textContent = calc.calculate(screen.textContent) + " ";
-        console.log(typeof(screen.textContent))
     } else if (this.className == "clear") {
         //clear´
     } else {
@@ -22,7 +21,10 @@ function displayToScreen() {
         if (this.className == "operator") {
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
-                    //call calculator
+                    let calc = new Calculator;
+
+                    console.log(screen.textContent)
+                    screen.textContent = calc.calculate(screen.textContent) + " ";
                     console.log("An operator was pressed again")
                     break;
                 }
