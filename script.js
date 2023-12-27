@@ -7,12 +7,15 @@ buttons.forEach((button) => {
 
 function displayToScreen() {
 
-    if(this.className == "equal") {
-        //testButton();
+    if (this.className == "equal") {
+        //equal
+    } else if (this.className == "clear") {
+        //clear
     } else {
         screen.textContent = this.textContent;
         console.log("A button was pressed")
     }
+
 }
 
 function Calculator(str) {
