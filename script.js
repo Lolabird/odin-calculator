@@ -1,4 +1,5 @@
 const mainScreen = document.querySelector(".main-screen");
+const topScreen = document.querySelector(".top-screen");
 const buttons = document.querySelectorAll("button");
 const operators = ["+", "-", "*", "/"];
 
@@ -10,8 +11,9 @@ buttons.forEach((button) => {
 function displayToScreen() {
     if (this.className == "equal") {
         let calc = new Calculator;
+        topScreen.textContent += mainScreen.textContent;
 
-        mainScreen.textContent = calc.calculate(mainScreen.textContent);
+        mainScreen.textContent = calc.calculate(topScreen.textContent);
     } else if (this.classList.contains("all")) {
         mainScreen.textContent = "0";
     } else if (this.classList.contains("error") && mainScreen.textContent !== "0") {
@@ -27,7 +29,7 @@ function displayToScreen() {
             }
     } else {
         if (this.className == "operator") {
-            let screenContent = mainScreen.textContent;
+            let screenContent = topScreen.textContent;
 
             // Add some logic for handling negatives with -
             // Add key support
@@ -37,13 +39,14 @@ function displayToScreen() {
                 if (operators.includes(screenContent[i])) {
                     let calc = new Calculator;
 
-                    result = calc.calculate(mainScreen.textContent);
+                    result = calc.calculate(topScreen.textContent);
                     mainScreen.textContent = result;
                     break;
                 }
             } 
 
-            mainScreen.textContent += " " + this.textContent + " ";
+            topScreen.textContent += mainScreen.textContent + " " + this.textContent + " ";
+            mainScreen.textContent = "0";
 
         } else if (mainScreen.textContent === "0" && this.className == "num") {
             mainScreen.textContent = this.textContent;

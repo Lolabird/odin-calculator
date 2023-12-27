@@ -39,15 +39,16 @@ main {
     background: #eee;
     color: #111;
     text-align: right;
-    font-size: 80px;
     display: flex;
     flex-direction: column;
 }
 .top-screen {
-    height: 20%;
+    height: 40%;
+    font-size: 20px;
 }
 .main-screen {
-    height: 80%;
+    height: 60%;
+    font-size: 50px;
 }
 
 button {
