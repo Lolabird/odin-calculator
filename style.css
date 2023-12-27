@@ -35,6 +35,8 @@ main {
     height: 100px;
     background: #eee;
     color: #111;
+    text-align: right;
+    font-size: 80px;
 }
 
 button {
