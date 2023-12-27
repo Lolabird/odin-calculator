@@ -12,9 +12,9 @@ function displayToScreen() {
         let calc = new Calculator;
 
         screen.textContent = calc.calculate(screen.textContent);
-    } else if (this.className == "clear") {
+    } else if (this.classList.contains("all")) {
         screen.textContent = "0";
-    } else if (this.className == "back") {
+    } else if (this.classList.contains("error")) {
         screen.textContent = screen.textContent.trimEnd()
         screen.textContent = screen.textContent.slice(0, -1);
 
@@ -26,7 +26,6 @@ function displayToScreen() {
             let screenContent = screen.textContent;
 
             // Add some logic for handling negatives with -
-            // 0 on a trailing decimal point
             // Add key support
 
             for (let i = 0; i < screenContent.length; i++ ) {
@@ -86,7 +85,6 @@ function divideDecimals(a, b) {
     const divisor = Math.pow(10, maxDec);
    
     return(a * divisor) / (b * divisor);
-
 }
 
 
