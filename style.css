@@ -31,7 +31,7 @@ main {
     box-shadow: 1px 2px 10px 1px #222;
 }
 
-.screen {
+.display {
     grid-column: 1 / span 4;
     height: 100px;
     max-width: 415px;
@@ -40,6 +40,14 @@ main {
     color: #111;
     text-align: right;
     font-size: 80px;
+    display: flex;
+    flex-direction: column;
+}
+.top-screen {
+    height: 20%;
+}
+.main-screen {
+    height: 80%;
 }
 
 button {

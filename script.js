@@ -1,4 +1,4 @@
-const screen = document.querySelector(".screen");
+const mainScreen = document.querySelector(".main-screen");
 const buttons = document.querySelectorAll("button");
 const operators = ["+", "-", "*", "/"];
 
@@ -11,44 +11,44 @@ function displayToScreen() {
     if (this.className == "equal") {
         let calc = new Calculator;
 
-        screen.textContent = calc.calculate(screen.textContent);
+        mainScreen.textContent = calc.calculate(mainScreen.textContent);
     } else if (this.classList.contains("all")) {
-        screen.textContent = "0";
-    } else if (this.classList.contains("error") && screen.textContent !== "0") {
-            screen.textContent = screen.textContent.trimEnd()
-            screen.textContent = screen.textContent.slice(0, -1);
+        mainScreen.textContent = "0";
+    } else if (this.classList.contains("error") && mainScreen.textContent !== "0") {
+            mainScreen.textContent = mainScreen.textContent.trimEnd()
+            mainScreen.textContent = mainScreen.textContent.slice(0, -1);
 
-            if (!isNaN(screen.textContent.charAt(-2))) {
-                 screen.textContent = screen.textContent.trimEnd()
+            if (!isNaN(mainScreen.textContent.charAt(-2))) {
+                 mainScreen.textContent = mainScreen.textContent.trimEnd()
             }
 
-            if (screen.textContent === "") {
-                screen.textContent = "0"
+            if (mainScreen.textContent === "") {
+                mainScreen.textContent = "0"
             }
     } else {
         if (this.className == "operator") {
-            let screenContent = screen.textContent;
+            let screenContent = mainScreen.textContent;
 
             // Add some logic for handling negatives with -
             // Add key support
-            //limit character size in screen
+            // limit character size in mainScreen -- first step is to move numbers from the main mainScreen to somewhere else every time a new operator is used and then change what gets sent to the calculator to that new location
 
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
                     let calc = new Calculator;
 
-                    result = calc.calculate(screen.textContent);
-                    screen.textContent = result;
+                    result = calc.calculate(mainScreen.textContent);
+                    mainScreen.textContent = result;
                     break;
                 }
             } 
 
-            screen.textContent += " " + this.textContent + " ";
+            mainScreen.textContent += " " + this.textContent + " ";
 
-        } else if (screen.textContent === "0" && this.className == "num") {
-            screen.textContent = this.textContent;
+        } else if (mainScreen.textContent === "0" && this.className == "num") {
+            mainScreen.textContent = this.textContent;
         } else if (this.className == "num") {
-            screen.textContent += this.textContent;
+            mainScreen.textContent += this.textContent;
         }
     }
 }
