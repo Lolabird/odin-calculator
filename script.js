@@ -26,7 +26,7 @@ function displayToScreen() {
             let screenContent = screen.textContent;
 
             // Add some logic for handling negatives with -
-            // Handle decimals add 0 on a trailing decimal point
+            // 0 on a trailing decimal point
             // Add key support
 
             for (let i = 0; i < screenContent.length; i++ ) {
@@ -50,12 +50,26 @@ function displayToScreen() {
 }
 
 
+function addDecimals(a, b) {
+    a = String(a);
+    b = String(b);
+
+    const adec = (a.split(".")[1] || "").length;
+    const bdec = (b.split(".")[1] || "").length;
+    const maxdec = Math.max(adec, bdec);
+    let divdec = "1";
+    divdec = divdec.padEnd(maxdec, "0");
+
+    return ((+a * divdec + +b * divdec) / divdec).toFixed(maxdec); 
+}
+
+
 function Calculator(str) {
     console.log("Calculator has been called")
     
     this.methods = {
-        "-": (a, b) => (a - b),
-        "+": (a, b) => (a + b), 
+        "-": (a, b) => addDecimals(a, -b),
+        "+": (a, b) => addDecimals(a, b), 
         "/": (a, b) => (a / b),
         "*": (a, b) => (a * b)
     };
