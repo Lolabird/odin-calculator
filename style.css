@@ -34,6 +34,8 @@ main {
 .screen {
     grid-column: 1 / span 4;
     height: 100px;
+    max-width: 415px;
+    overflow: hidden;
     background: #eee;
     color: #111;
     text-align: right;
