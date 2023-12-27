@@ -1,34 +1,49 @@
 const mainScreen = document.querySelector(".main-screen");
 const topScreen = document.querySelector(".top-screen");
-const buttons = document.querySelectorAll("button");
+const numButtons = document.querySelectorAll(".num");
+const equalButton = document.querySelector(".equal");
+const opButtons = document.querySelectorAll(".operator");
+const clearButtons = document.querySelectorAll(".clear");
 const operators = ["+", "-", "*", "/"];
 let inOps = false;
 let isEval = false;
 
 
-buttons.forEach((button) => {
-    button.addEventListener ("click", displayToScreen);
+numButtons.forEach((button) => {
+    button.addEventListener("click", displayNum);
 });
 
+opButtons.forEach((button) => {
+    button.addEventListener("click", displayOperator);
+});
 
-function displayToScreen() {
-    console.log("inOps:", inOps);
-    console.log("isEval:", isEval);
+clearButtons.forEach((button) => {
+    button.addEventListener("click", clear);
+});
 
-    if (this.className == "equal") {
-        let calc = new Calculator;
-        inOps = true;
+equalButton.addEventListener("click", displayEval);
 
-        if (isEval) {
-            topScreen.textContent = mainScreen.textContent;
-            isEval = false;
-        } else {
-            topScreen.textContent += mainScreen.textContent;
-        }
 
-        mainScreen.textContent = calc.calculate(topScreen.textContent);
+function displayEval() {
+    console.log(this.textContent);
 
-    } else if (this.classList.contains("all")) {
+}
+
+
+function displayOperator() {
+    console.log(this.textContent);
+}
+
+
+function displayNum() {
+    console.log(this.textContent);
+}
+
+
+function clear() {
+    console.log(this.textContent);
+
+    if (this.classList.contains("all")) {
         mainScreen.textContent = "0";
         topScreen.textContent = "";
 
@@ -43,39 +58,6 @@ function displayToScreen() {
             if (mainScreen.textContent === "") {
                 mainScreen.textContent = "0"
             }
-    } else {
-        if (this.className == "operator") {
-            let screenContent = topScreen.textContent;
-            inOps = true;
-
-            if (isEval) {
-                topScreen.textContent = mainScreen.textContent + " " + this.textContent + " "
-                isEval = false
-            } else {
-                topScreen.textContent += mainScreen.textContent + " " + this.textContent + " ";
-            }
-
-            // Add some logic for handling negatives with -
-            // Add key support
-            // limit character size in mainScreen -- first step is to move numbers from the main mainScreen to somewhere else every time a new operator is used and then change what gets sent to the calculator to that new location
-
-            for (let i = 0; i < screenContent.length; i++ ) {
-                if (operators.includes(screenContent[i])) {
-                    let calc = new Calculator;
-                    let result = calc.calculate(topScreen.textContent);
-                    mainScreen.textContent = result;
-                    break;
-                }
-            } 
-
-            
-        } else if ((mainScreen.textContent === "0" || inOps) && this.className == "num") {
-            mainScreen.textContent = this.textContent;
-            inOps = false;
-
-        } else if (this.className == "num" && !inOps) {
-            mainScreen.textContent += this.textContent;
-        }
     }
 }
 
