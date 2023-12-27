@@ -1,5 +1,6 @@
-const screen = document.querySelector(".screen")
-const buttons = document.querySelectorAll("button")
+const screen = document.querySelector(".screen");
+const buttons = document.querySelectorAll("button");
+const operators = ["+", "-", "*", "/"];
 
 buttons.forEach((button) => {
     button.addEventListener ("click", displayToScreen);
@@ -10,9 +11,21 @@ function displayToScreen() {
     if (this.className == "equal") {
         //equal
     } else if (this.className == "clear") {
-        //clear
+        //clear´
     } else {
-        screen.textContent = this.textContent;
+        let screenContent = screen.textContent;
+
+        if (this.className == "operator") {
+            for (let i = 0; i < screenContent.length; i++ ) {
+                if (operators.includes(screenContent[i])) {
+                    //call calculator
+                    console.log("An operator was pressed again")
+                    break;
+                }
+            }
+        }
+
+        screen.textContent += this.textContent;
         console.log("A button was pressed")
     }
 
