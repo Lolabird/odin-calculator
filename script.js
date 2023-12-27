@@ -8,16 +8,26 @@ buttons.forEach((button) => {
 
 
 function displayToScreen() {
-
     if (this.className == "equal") {
         let calc = new Calculator;
 
         screen.textContent = calc.calculate(screen.textContent);
     } else if (this.className == "clear") {
         screen.textContent = "0";
+    } else if (this.className == "back") {
+        screen.textContent = screen.textContent.trimEnd()
+        screen.textContent = screen.textContent.slice(0, -1);
+
+        if (!isNaN(screen.textContent.charAt(-2))) {
+            screen.textContent = screen.textContent.trimEnd()
+        }
     } else {
         if (this.className == "operator") {
             let screenContent = screen.textContent;
+
+            // Add some logic for handling negatives with -
+            // Handle decimals add 0 on a trailing decimal point
+            // Add key support
 
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {

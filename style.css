@@ -45,6 +45,11 @@ button {
     font-size: 50px
 }
 
+.clear, .back {
+    grid-column: span 2;
+    width: 205px;
+}
+
 footer {
     flex: 0 0 auto;
 }
