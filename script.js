@@ -12,28 +12,25 @@ function displayToScreen() {
     if (this.className == "equal") {
         let calc = new Calculator;
 
-        console.log(screen.textContent)
         screen.textContent = calc.calculate(screen.textContent);
     } else if (this.className == "clear") {
         screen.textContent = "0";
     } else {
-        let screenContent = screen.textContent;
-
         if (this.className == "operator") {
-            screen.textContent += " ";
+            let screenContent = screen.textContent;
 
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
                     let calc = new Calculator;
 
-                    console.log(screen.textContent);
                     result = calc.calculate(screen.textContent);
-                    screen.textContent += result;
+                    screen.textContent = result;
                     break;
                 }
-            }     
+            } 
 
-            screen.textContent += this.textContent + " "; 
+            screen.textContent += " " + this.textContent + " ";
+
         } else if (screen.textContent === "0" && this.className == "num") {
             screen.textContent = this.textContent;
         } else {
