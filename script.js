@@ -1,3 +1,20 @@
+const screen = document.querySelector(".screen")
+const buttons = document.querySelectorAll("button")
+
+buttons.forEach((button) => {
+    button.addEventListener ("click", displayToScreen);
+});
+
+function displayToScreen() {
+
+    if(this.className == "equal") {
+        //testButton();
+    } else {
+        screen.textContent = this.textContent;
+        console.log("A button was pressed")
+    }
+}
+
 function Calculator(str) {
 
     this.methods = {

@@ -34,6 +34,7 @@ main {
     grid-column: 1 / span 4;
     height: 100px;
     background: #eee;
+    color: #111;
 }
 
 button {
