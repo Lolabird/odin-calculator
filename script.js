@@ -56,11 +56,37 @@ function addDecimals(a, b) {
 
     const adec = (a.split(".")[1] || "").length;
     const bdec = (b.split(".")[1] || "").length;
-    const maxdec = Math.max(adec, bdec);
+    const maxDec = Math.max(adec, bdec);
     let divdec = "1";
-    divdec = divdec.padEnd(maxdec, "0");
+    divdec = divdec.padEnd(maxDec, "0");
 
-    return ((+a * divdec + +b * divdec) / divdec).toFixed(maxdec); 
+    return ((+a * divdec + +b * divdec) / divdec).toFixed(maxDec); 
+}
+
+
+function multiplyDecimals(a, b) {
+    a = String(a);
+    b = String(b);
+
+    const adec = (a.split(".")[1] || "").length;
+    const bdec = (b.split(".")[1] || "").length;
+    const totalDec = adec + bdec;
+    
+    return (a * b).toFixed(totalDec)
+}
+
+
+function divideDecimals(a, b) {
+    a = String(a);
+    b = String(b);
+
+    const adec = (a.split(".")[1] || "").length;
+    const bdec = (b.split(".")[1] || "").length;
+    const maxDec = Math.max(adec, bdec);
+    const divisor = Math.pow(10, maxDec);
+   
+    return(a * divisor) / (b * divisor);
+
 }
 
 
@@ -70,8 +96,8 @@ function Calculator(str) {
     this.methods = {
         "-": (a, b) => addDecimals(a, -b),
         "+": (a, b) => addDecimals(a, b), 
-        "/": (a, b) => (a / b),
-        "*": (a, b) => (a * b)
+        "/": (a, b) => divideDecimals(a, b),
+        "*": (a, b) => multiplyDecimals(a, b)
     };
 
     this.calculate = function(str) {
