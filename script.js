@@ -6,45 +6,40 @@ buttons.forEach((button) => {
     button.addEventListener ("click", displayToScreen);
 });
 
+
 function displayToScreen() {
 
     if (this.className == "equal") {
         let calc = new Calculator;
 
         console.log(screen.textContent)
-        screen.textContent = calc.calculate(screen.textContent) + " ";
+        screen.textContent = calc.calculate(screen.textContent);
     } else if (this.className == "clear") {
-        //clear´
+        screen.textContent = "0";
     } else {
         let screenContent = screen.textContent;
 
         if (this.className == "operator") {
+            screen.textContent += " ";
+
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
                     let calc = new Calculator;
 
-                    console.log(screen.textContent)
-                    screen.textContent = calc.calculate(screen.textContent) + " ";
-                    console.log("An operator was pressed again")
+                    console.log(screen.textContent);
+                    result = calc.calculate(screen.textContent);
+                    screen.textContent += result;
                     break;
                 }
-            }
-        }
-        if (screen.textContent === "0") {
-            screen.textContent = this.textContent + " ";
-            console.log("A button was pressed");
+            }     
+
+            screen.textContent += this.textContent + " "; 
+        } else if (screen.textContent === "0" && this.className == "num") {
+            screen.textContent = this.textContent;
         } else {
-            screen.textContent += this.textContent + " ";
-            console.log("A button was pressed");
+            screen.textContent += this.textContent;
         }
-        
     }
-
-}
-
-
-function clear () {
-
 }
 
 
