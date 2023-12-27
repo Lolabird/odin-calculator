@@ -2,6 +2,8 @@ const mainScreen = document.querySelector(".main-screen");
 const topScreen = document.querySelector(".top-screen");
 const buttons = document.querySelectorAll("button");
 const operators = ["+", "-", "*", "/"];
+let inOps = false;
+
 
 buttons.forEach((button) => {
     button.addEventListener ("click", displayToScreen);
@@ -9,14 +11,19 @@ buttons.forEach((button) => {
 
 
 function displayToScreen() {
+    console.log(inOps);
+
     if (this.className == "equal") {
         let calc = new Calculator;
-        topScreen.textContent += mainScreen.textContent;
+        inOps = true;
 
+        topScreen.textContent += mainScreen.textContent;
         mainScreen.textContent = calc.calculate(topScreen.textContent);
+
     } else if (this.classList.contains("all")) {
         mainScreen.textContent = "0";
         topScreen.textContent = "";
+
     } else if (this.classList.contains("error") && mainScreen.textContent !== "0") {
             mainScreen.textContent = mainScreen.textContent.trimEnd()
             mainScreen.textContent = mainScreen.textContent.slice(0, -1);
@@ -32,7 +39,7 @@ function displayToScreen() {
         if (this.className == "operator") {
             let screenContent = topScreen.textContent;
             topScreen.textContent += mainScreen.textContent + " " + this.textContent + " ";
-
+            inOps = true;
             // Add some logic for handling negatives with -
             // Add key support
             // limit character size in mainScreen -- first step is to move numbers from the main mainScreen to somewhere else every time a new operator is used and then change what gets sent to the calculator to that new location
@@ -40,7 +47,6 @@ function displayToScreen() {
             for (let i = 0; i < screenContent.length; i++ ) {
                 if (operators.includes(screenContent[i])) {
                     let calc = new Calculator;
-
                     result = calc.calculate(topScreen.textContent);
                     mainScreen.textContent = result;
                     break;
@@ -48,9 +54,11 @@ function displayToScreen() {
             } 
 
             
-        } else if ((mainScreen.textContent === "0") && this.className == "num") {
+        } else if ((mainScreen.textContent === "0" || inOps) && this.className == "num") {
             mainScreen.textContent = this.textContent;
-        } else if (this.className == "num") {
+            inOps = false;
+
+        } else if (this.className == "num" && !inOps) {
             mainScreen.textContent += this.textContent;
         }
     }
