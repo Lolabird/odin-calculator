@@ -19,8 +19,12 @@ function displayToScreen() {
             screen.textContent = screen.textContent.slice(0, -1);
 
             if (!isNaN(screen.textContent.charAt(-2))) {
-            screen.textContent = screen.textContent.trimEnd()
-        }
+                 screen.textContent = screen.textContent.trimEnd()
+            }
+
+            if (screen.textContent === "") {
+                screen.textContent = "0"
+            }
     } else {
         if (this.className == "operator") {
             let screenContent = screen.textContent;
@@ -43,7 +47,7 @@ function displayToScreen() {
 
         } else if (screen.textContent === "0" && this.className == "num") {
             screen.textContent = this.textContent;
-        } else {
+        } else if (this.className == "num") {
             screen.textContent += this.textContent;
         }
     }
@@ -106,7 +110,7 @@ function Calculator(str) {
         b = +parts[2];
 
 
-        if (a && !b) {
+        if ((a || a == "0") && !b) {
             return a;
         }
         if (isNaN(a) || isNaN(b)) {
