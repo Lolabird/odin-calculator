@@ -16,6 +16,7 @@ function displayToScreen() {
         mainScreen.textContent = calc.calculate(topScreen.textContent);
     } else if (this.classList.contains("all")) {
         mainScreen.textContent = "0";
+        topScreen.textContent = "";
     } else if (this.classList.contains("error") && mainScreen.textContent !== "0") {
             mainScreen.textContent = mainScreen.textContent.trimEnd()
             mainScreen.textContent = mainScreen.textContent.slice(0, -1);
@@ -30,6 +31,7 @@ function displayToScreen() {
     } else {
         if (this.className == "operator") {
             let screenContent = topScreen.textContent;
+            topScreen.textContent += mainScreen.textContent + " " + this.textContent + " ";
 
             // Add some logic for handling negatives with -
             // Add key support
@@ -45,10 +47,8 @@ function displayToScreen() {
                 }
             } 
 
-            topScreen.textContent += mainScreen.textContent + " " + this.textContent + " ";
-            mainScreen.textContent = "0";
-
-        } else if (mainScreen.textContent === "0" && this.className == "num") {
+            
+        } else if ((mainScreen.textContent === "0") && this.className == "num") {
             mainScreen.textContent = this.textContent;
         } else if (this.className == "num") {
             mainScreen.textContent += this.textContent;
