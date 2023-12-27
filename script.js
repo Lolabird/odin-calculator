@@ -9,7 +9,11 @@ buttons.forEach((button) => {
 function displayToScreen() {
 
     if (this.className == "equal") {
-        //equal
+        let calc = new Calculator;
+
+        console.log(screen.textContent)
+        screen.textContent = calc.calculate(screen.textContent) + " ";
+        console.log(typeof(screen.textContent))
     } else if (this.className == "clear") {
         //clear´
     } else {
@@ -24,15 +28,27 @@ function displayToScreen() {
                 }
             }
         }
-
-        screen.textContent += this.textContent;
-        console.log("A button was pressed")
+        if (screen.textContent === "0") {
+            screen.textContent = this.textContent + " ";
+            console.log("A button was pressed");
+        } else {
+            screen.textContent += this.textContent + " ";
+            console.log("A button was pressed");
+        }
+        
     }
 
 }
 
-function Calculator(str) {
 
+function clear () {
+
+}
+
+
+function Calculator(str) {
+    console.log("Calculator has been called")
+    
     this.methods = {
         "-": (a, b) => (a - b),
         "+": (a, b) => (a + b), 
