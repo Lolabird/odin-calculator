@@ -56,13 +56,16 @@ function Calculator(str) {
         op = parts[1];
         b = +parts[2];
 
+
+        if (a && !b) {
+            return a;
+        }
         if (isNaN(a) || isNaN(b)) {
             return NaN;
         }
         if (!this.methods[op]) {
             return "Operation not supported."
         }
-
         return this.methods[op](a, b);
     };
 }
