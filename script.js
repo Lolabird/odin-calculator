@@ -72,6 +72,10 @@ function displayNum() {
         mainScreen.textContent += this.textContent;
     }
 
+    if (isEval) {
+        topScreen.textContent = "";
+    }
+
     isEval = false;
 }
 
