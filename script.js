@@ -43,6 +43,13 @@ function displayEval() {
 
 function displayOperator() {
     let result = 0
+    let operator = this.textContent;
+
+    if (operator == "-" && (isNaN(mainScreen.textContent) || mainScreen.textContent == "0")) {
+        console.log("Entering changeSign");
+        changeSign();
+        return;
+    }
 
     if (topScreen.textContent == "" || !inOps) {
         topScreen.textContent = mainScreen.textContent + " " + this.textContent + " "; 
