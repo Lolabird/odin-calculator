@@ -28,8 +28,8 @@ function displayEval() {
     let calc = new Calculator;
     let result = 0
 
-    if (topScreen.textContent === "0") {
-        calc.calculate(mainScreen.textContent);
+    if (topScreen.textContent === "0" || !inOps) {
+        result = calc.calculate(mainScreen.textContent);
     } else {
         topScreen.textContent += mainScreen.textContent;
         console.log("main: " + mainScreen.textContent);
