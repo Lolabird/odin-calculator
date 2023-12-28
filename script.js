@@ -4,6 +4,7 @@ const numButtons = document.querySelectorAll(".num");
 const equalButton = document.querySelector(".equal");
 const opButtons = document.querySelectorAll(".operator");
 const clearButtons = document.querySelectorAll(".clear");
+const plusMinus = document.querySelector(".plus-minus");
 const operators = ["+", "-", "*", "/"];
 let inOps = false;
 let isEval = false;
@@ -23,6 +24,8 @@ clearButtons.forEach((button) => {
 
 equalButton.addEventListener("click", displayEval);
 
+plusMinus.addEventListener("click", changeSign);
+
 
 function displayEval() {
     let calc = new Calculator;
@@ -38,6 +41,7 @@ function displayEval() {
 
     mainScreen.textContent = result;
     inOps = false;
+    isEval = true;
 }
 
 
@@ -57,15 +61,18 @@ function displayOperator() {
 
     mainScreen.textContent = 0;
     inOps = true;
+    isEval = false;
 }
 
 
 function displayNum() {
-    if (mainScreen.textContent == "0") {
+    if (mainScreen.textContent == "0" || isEval) {
         mainScreen.textContent = this.textContent;
     } else {
         mainScreen.textContent += this.textContent;
     }
+
+    isEval = false;
 }
 
 
@@ -87,6 +94,19 @@ function clear() {
             }
     }
 }
+
+
+function changeSign() {
+    let num = +mainScreen.textContent;
+    
+    if (num > 0) {
+        mainScreen.textContent = `${-num}`;
+    } else if (num < 0) {
+        mainScreen.textContent = `${num}`;
+    } else {
+        mainScreen.textContent = "-";
+    }
+} 
 
 
 function addDecimals(a, b) {
