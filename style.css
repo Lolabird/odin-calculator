@@ -63,13 +63,11 @@ button:hover {
     filter: brightness(.9);
 }
 
-.num {
+.num, .plus-minus {
     background: #d9e1f2;
 }
 
 .clear {
-    grid-column: span 2;
-    width: 205px;
     background: #f98383;
 }
 
@@ -78,6 +76,8 @@ button:hover {
 }
 
 .equal {
+    grid-column: span 2;
+    width: 205px;
     background: #79ff54;
 }
 
