@@ -86,7 +86,7 @@ function clear() {
         mainScreen.textContent = "0";
         topScreen.textContent = "";
 
-    } else if (this.classList.contains("error") && mainScreen.textContent !== "0") {
+    } else if (this.classList.contains("entry") && mainScreen.textContent !== "0") {
             if (/^[0-9.]+$/.test(mainScreen.textContent)) {
                 mainScreen.textContent = mainScreen.textContent.slice(0, -1);
             } else {
@@ -201,7 +201,7 @@ function handleKeys(e) {
     } else if (e.key === ".") {
         button = document.querySelector("#dec");
     } else if (e.key === "Backspace" || e.key === "Delete") {
-        button = document.querySelector(".error");
+        button = document.querySelector(".entry");
     } else if (e.key === "c" || e.key === "Escape") {
         button = document.querySelector(".all");
     } else if (operators.hasOwnProperty(e.key)) {
