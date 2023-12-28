@@ -146,7 +146,7 @@ function Calculator(str) {
         b = +parts[2];
 
 
-        if ((a || a == "0") && !b) {
+        if ((a || a == "0") && !op && !b) {
             return a;
         }
         if (isNaN(a) || isNaN(b)) {
