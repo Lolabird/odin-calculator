@@ -69,7 +69,7 @@ function displayOperator() {
 function displayNum() {
     if (mainScreen.textContent == "0" || isEval) {
         mainScreen.textContent = this.textContent;
-    } else {
+    } else if (mainScreen.textContent.length < 8) {
         mainScreen.textContent += this.textContent;
     }
 
@@ -181,8 +181,23 @@ function Calculator(str) {
         if (!this.methods[op]) {
             return "Operation not supported."
         }
-        return this.methods[op](a, b);
+
+        let result = this.methods[op](a, b);
+        return formatResult(result);
     };
+}
+
+
+function formatResult(result) {
+    const resultStr = result.toString();
+    const maxLength = 9; 
+    
+    if (resultStr.length > maxLength) {
+        expoResult =  parseFloat(result).toExponential(maxLength - 6);
+        return expoResult;
+    } 
+
+    return result;
 }
 
 
