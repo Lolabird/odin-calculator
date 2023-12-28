@@ -97,16 +97,23 @@ function clear() {
 
 
 function changeSign() {
-    let num = +mainScreen.textContent;
-    
-    if (num > 0) {
-        mainScreen.textContent = `${-num}`;
-    } else if (num < 0) {
-        mainScreen.textContent = `${num}`;
-    } else {
+    let num = mainScreen.textContent;
+
+    if (num === "0") {
+        // Replace 0 with the negative sign
         mainScreen.textContent = "-";
+    } else if (num === "-") {
+        // If already negative, reset to 0
+        mainScreen.textContent = "0";
+    } else if (num.startsWith("-")) {
+        // If the number is negative, remove the negative sign
+        mainScreen.textContent = num.substring(1);
+    } else {
+        // Toggle the sign for positive numbers
+        mainScreen.textContent = `-${num}`;
     }
-} 
+}
+
 
 
 function addDecimals(a, b) {
@@ -203,5 +210,7 @@ function handleKeys(e) {
     } else if (e.key === "=" || e.key === "Enter") {
         e.preventDefault();
         document.querySelector(".equal").click();
+    } else if (e.key === "_") {
+        document.querySelector(".plus-minus").click();
     }
 } 
