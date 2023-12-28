@@ -25,24 +25,50 @@ equalButton.addEventListener("click", displayEval);
 
 
 function displayEval() {
-    console.log(this.textContent);
+    let calc = new Calculator;
+    let result = 0
 
+    if (topScreen.textContent === "0") {
+        calc.calculate(mainScreen.textContent);
+    } else {
+        topScreen.textContent += mainScreen.textContent;
+        console.log("main: " + mainScreen.textContent);
+        result = calc.calculate(topScreen.textContent);
+    }
+
+    mainScreen.textContent = result;
+    inOps = false;
 }
 
 
 function displayOperator() {
-    console.log(this.textContent);
+    //console.log(this.textContent);
+    let result = 0
+
+    if (topScreen.textContent == "" || !inOps) {
+        topScreen.textContent = mainScreen.textContent + " " + this.textContent + " "; 
+    } else {
+        let calc = new Calculator;
+
+        topScreen.textContent += mainScreen.textContent;
+        result = calc.calculate(topScreen.textContent);
+    }
+
+    mainScreen.textContent = result;
+    inOps = true;
 }
 
 
 function displayNum() {
-    console.log(this.textContent);
+    if (mainScreen.textContent == "0") {
+        mainScreen.textContent = this.textContent;
+    } else {
+        mainScreen.textContent += this.textContent;
+    }
 }
 
 
 function clear() {
-    console.log(this.textContent);
-
     if (this.classList.contains("all")) {
         mainScreen.textContent = "0";
         topScreen.textContent = "";
