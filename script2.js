@@ -52,6 +52,8 @@ function displayOperator() {
 
         topScreen.textContent += mainScreen.textContent;
         result = calc.calculate(topScreen.textContent);
+
+        topScreen.textContent = result + " " + this.textContent + " ";
     }
 
     mainScreen.textContent = result;
@@ -60,10 +62,15 @@ function displayOperator() {
 
 
 function displayNum() {
-    if (mainScreen.textContent == "0") {
+    if (mainScreen.textContent == "0" || inOps) {
         mainScreen.textContent = this.textContent;
+        inOps = false;
     } else {
         mainScreen.textContent += this.textContent;
+    }
+    
+    if (isNaN(topScreen.textContent) && isNaN(topScreen.textContent.charAt(-1))) {
+            topScreen.textContent += this.textContent;
     }
 }
 
