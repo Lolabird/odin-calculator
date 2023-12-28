@@ -173,7 +173,7 @@ function Calculator(str) {
 
 
         if ((a || a == "0") && !op && !b) {
-            return a;
+            return formatResult(a);
         }
         if (isNaN(a) || isNaN(b)) {
             return NaN;
