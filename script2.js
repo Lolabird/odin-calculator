@@ -56,22 +56,21 @@ function displayOperator() {
         topScreen.textContent = result + " " + this.textContent + " ";
     }
 
-    mainScreen.textContent = result;
+    mainScreen.textContent = 0;
     inOps = true;
 }
 
 
 function displayNum() {
-    if (mainScreen.textContent == "0" || inOps) {
+    if (mainScreen.textContent == "0") {
         mainScreen.textContent = this.textContent;
-        inOps = false;
     } else {
         mainScreen.textContent += this.textContent;
     }
     
-    if (isNaN(topScreen.textContent) && isNaN(topScreen.textContent.charAt(-1))) {
-            topScreen.textContent += this.textContent;
-    }
+    // // if (isNaN(topScreen.textContent) && isNaN(topScreen.textContent.charAt(-1))) {
+    // //         topScreen.textContent += this.textContent;
+    // // }
 }
 
 
