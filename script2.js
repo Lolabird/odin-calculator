@@ -42,7 +42,6 @@ function displayEval() {
 
 
 function displayOperator() {
-    //console.log(this.textContent);
     let result = 0
 
     if (topScreen.textContent == "" || !inOps) {
@@ -67,10 +66,6 @@ function displayNum() {
     } else {
         mainScreen.textContent += this.textContent;
     }
-    
-    // // if (isNaN(topScreen.textContent) && isNaN(topScreen.textContent.charAt(-1))) {
-    // //         topScreen.textContent += this.textContent;
-    // // }
 }
 
 
