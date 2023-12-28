@@ -5,7 +5,6 @@ const equalButton = document.querySelector(".equal");
 const opButtons = document.querySelectorAll(".operator");
 const clearButtons = document.querySelectorAll(".clear");
 const plusMinus = document.querySelector(".plus-minus");
-const operators = ["+", "-", "*", "/"];
 let inOps = false;
 let isEval = false;
 
@@ -13,18 +12,15 @@ let isEval = false;
 numButtons.forEach((button) => {
     button.addEventListener("click", displayNum);
 });
-
 opButtons.forEach((button) => {
     button.addEventListener("click", displayOperator);
 });
-
 clearButtons.forEach((button) => {
     button.addEventListener("click", clear);
 });
-
 equalButton.addEventListener("click", displayEval);
-
 plusMinus.addEventListener("click", changeSign);
+window.addEventListener("keydown", handleKeys);
 
 
 function displayEval() {
@@ -182,3 +178,30 @@ function Calculator(str) {
         return this.methods[op](a, b);
     };
 }
+
+
+function handleKeys(e) {
+    const operators = {
+        "+": "plus", 
+        "-": "minus", 
+        "*": "multiply", 
+        "/": "divide"
+    };
+
+
+    if (e.key >= 0 && e.key <= 9) {
+        document.querySelector(`#num${e.key}`).click();
+    } else if (e.key === ".") {
+        document.querySelector("#dec").click();
+    } else if (e.key === "Backspace" || e.key === "Delete") {
+        document.querySelector(".error").click();
+    } else if (e.key === "c" || e.key === "Escape") {
+        document.querySelector(".all").click();
+    } else if (operators.hasOwnProperty(e.key)) {
+        e.preventDefault();
+        document.querySelector(`#${operators[e.key]}`).click();
+    } else if (e.key === "=" || e.key === "Enter") {
+        e.preventDefault();
+        document.querySelector(".equal").click();
+    }
+} 
