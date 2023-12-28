@@ -202,22 +202,33 @@ function handleKeys(e) {
         "/": "divide"
     };
 
+    let button;
 
     if (e.key >= 0 && e.key <= 9) {
-        document.querySelector(`#num${e.key}`).click();
+        button = document.querySelector(`#num${e.key}`);
     } else if (e.key === ".") {
-        document.querySelector("#dec").click();
+        button = document.querySelector("#dec");
     } else if (e.key === "Backspace" || e.key === "Delete") {
-        document.querySelector(".error").click();
+        button = document.querySelector(".error");
     } else if (e.key === "c" || e.key === "Escape") {
-        document.querySelector(".all").click();
+        button = document.querySelector(".all");
     } else if (operators.hasOwnProperty(e.key)) {
         e.preventDefault();
-        document.querySelector(`#${operators[e.key]}`).click();
+        button = document.querySelector(`#${operators[e.key]}`);
     } else if (e.key === "=" || e.key === "Enter") {
         e.preventDefault();
-        document.querySelector(".equal").click();
+        button = document.querySelector(".equal");
     } else if (e.key === "_") {
-        document.querySelector(".plus-minus").click();
+        button = document.querySelector(".plus-minus");
+    }
+
+    if (button) {
+        button.classList.add("active");
+
+        window.addEventListener("keyup", () => {
+            button.classList.remove("active")
+        });
+
+        button.click();
     }
 } 
