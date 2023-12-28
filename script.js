@@ -202,7 +202,7 @@ function handleKeys(e) {
         button = document.querySelector("#dec");
     } else if (e.key === "Backspace" || e.key === "Delete") {
         button = document.querySelector(".entry");
-    } else if (e.key === "c" || e.key === "Escape") {
+    } else if (e.key === "c" || e.key === "C" || e.key === "Escape") {
         button = document.querySelector(".all");
     } else if (operators.hasOwnProperty(e.key)) {
         e.preventDefault();
