@@ -6,6 +6,11 @@
          url("./fonts/SixteenSegments.ttf") format("truetype")
 }
 
+/* * {
+    box-sizing: border-box;
+} */
+
+
 html {
     --digi-green: #79ff54;
     --dark-green: #094909;
@@ -82,20 +87,20 @@ main {
 .top-screen {
     height: 40%;
     font-size: 30px;
-    max-width: 415px;
+    max-width: 100%;
     overflow: hidden;
 }
 .main-screen {
     height: 60%;
     font-size: 70px;
-    max-width: 415px;
+    max-width: 100%;
     overflow: hidden;
 }
 
 button {
     font-family: "Fira Sans", sans-serif;
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
     font-size: 50px;
     text-align: center;
     border-color: var(--light-text);
@@ -164,7 +169,7 @@ button:active, .active {
 
 .equal {
     grid-column: span 2;
-    width: 205px;
+    width: 100%;
     background-color: var(--digi-green);
 }
 
@@ -194,7 +199,6 @@ footer a:hover, footer a:focus {
     .calculator {
         max-width: 90vw;
         height: 70%;
-        box-sizing: border-box;
     }
 
     .main-screen {
@@ -204,11 +208,6 @@ footer a:hover, footer a:focus {
 
     button {
         font-size: 40px;
-        height: 100%;
-        width: 100%;
     }
 
-    .equal {
-        width: 100%;
-    }
 }
