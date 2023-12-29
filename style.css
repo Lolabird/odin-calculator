@@ -6,11 +6,6 @@
          url("./fonts/SixteenSegments.ttf") format("truetype")
 }
 
-/* * {
-    box-sizing: border-box;
-} */
-
-
 html {
     --digi-green: #79ff54;
     --dark-green: #094909;
@@ -38,7 +33,6 @@ header {
     flex: 0 0 auto;
     padding: 15px 0;
     background-color: var(--dark-trans);
-    max-width: 100%;
 }
 
 header h1 {
@@ -87,20 +81,20 @@ main {
 .top-screen {
     height: 40%;
     font-size: 30px;
-    max-width: 100%;
+    max-width: 415px;
     overflow: hidden;
 }
 .main-screen {
     height: 60%;
     font-size: 70px;
-    max-width: 100%;
+    max-width: 415px;
     overflow: hidden;
 }
 
 button {
     font-family: "Fira Sans", sans-serif;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
     font-size: 50px;
     text-align: center;
     border-color: var(--light-text);
@@ -169,7 +163,7 @@ button:active, .active {
 
 .equal {
     grid-column: span 2;
-    width: 100%;
+    width: 205px;
     background-color: var(--digi-green);
 }
 
@@ -178,7 +172,6 @@ footer {
     padding: 10px;
     background-color: var(--dark-trans);
     letter-spacing: 2px;
-    max-width: 100%;
 }
 
 footer a {
@@ -189,25 +182,4 @@ footer a:hover, footer a:focus {
     color: rgb(170, 255, 0);
     text-decoration: none;
     margin: 0;
-}
-
-@media only screen and (max-width: 600px) {
-    header h1 {
-        font-size: 50px;
-    }
-    
-    .calculator {
-        max-width: 90vw;
-        height: 70%;
-    }
-
-    .main-screen {
-        font-size: 45px;
-        word-wrap: break-word;
-    }
-
-    button {
-        font-size: 40px;
-    }
-
 }
