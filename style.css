@@ -183,3 +183,26 @@ footer a:hover, footer a:focus {
     text-decoration: none;
     margin: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    
+    .calculator {
+        width: 90vw;
+        height: 70%;
+    }
+
+    .main-screen {
+        font-size: 45px;
+        word-wrap: break-word;
+    }
+
+    button {
+        font-size: 40px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .equal {
+        width: 100%;
+    }
+}
