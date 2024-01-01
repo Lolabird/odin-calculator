@@ -184,3 +184,39 @@ footer a:hover, footer a:focus {
     text-decoration: none;
     margin: 0;
 }
+
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: (calc(70px *.75));
+    }
+
+    .calculator {
+        max-width: calc(415px * .75);
+        grid-gap: calc(5px * .75);
+    }
+
+    .display {
+        max-width: calc(415px * .75);
+        height: calc(150px * .75);
+    }
+
+    .top-screen {
+        max-width: calc(415px * .75);
+        font-size: calc(30px *.75);
+    }
+
+    .main-screen {
+        max-width: calc(415px * .75);
+        font-size: calc(70px * .75);
+    }
+
+    button {
+        width: calc(100px * .75);
+        height: calc(100px * .75);
+        font-size: calc(50px *.75);
+    }
+
+    .equal {
+        width: calc(205px * .75)
+    }
+}
