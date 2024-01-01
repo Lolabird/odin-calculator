@@ -17,6 +17,7 @@ html {
 body {
     background-image: url("./images/matrix-356024_1920.jpg");
     background-size: cover;
+    background-attachment: fixed;
     font-family: "Fira Sans", sans-serif;
     display: flex;
     text-align: center;
