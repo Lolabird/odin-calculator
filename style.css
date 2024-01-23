@@ -211,6 +211,7 @@ footer a:hover, footer a:focus {
     }
 
     button {
+        padding: 0;
         width: calc(100px * .75);
         height: calc(100px * .75);
         font-size: calc(50px *.75);
